@@ -1,0 +1,49 @@
+/* style.css */
+body {
+    color: #3A3A3A;
+    font-family: 'Wittgenstein', sans-serif;
+  }
+  
+.custom-bg {
+    background-color: #D8D8D8;
+}
+
+.nav-custom{
+    padding: 20px 30px 40px 30px;
+}
+
+.custom-carousel {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 623px; /* Set fixed height */
+    width: 1330px; /* Set fixed width */
+    margin: auto; /* Center horizontally */
+}
+    
+.custom-carousel .carousel-inner {
+    height: 100%; /* Ensure the carousel inner content fills the fixed height */
+}
+
+.custom-carousel .carousel-item img {
+    height: 100%; /* Ensure images fill the carousel item */
+    width: 100%; /* Ensure images fill the carousel item */
+    object-fit: cover; /* Maintain aspect ratio */
+}
+    
+.custom-card {
+    background-color: rgba(255, 255, 255, 0.55); /* White with 75% opacity */
+    width: 693px;
+    height: 355px;
+    margin: auto;
+
+    position: relative;
+    transform: translateX(-100%) translateY(-182%);
+
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); /* Optional: Add box shadow */
+}
+
+.btn-shop{
+    background-color: #E89F71;
+    color: #FFFFFF;
+}
