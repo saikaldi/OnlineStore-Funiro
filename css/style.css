@@ -2,10 +2,11 @@
 body {
     color: #3A3A3A;
     font-family: 'Wittgenstein', sans-serif;
+    background-color: #D8D8D8;
   }
   
-.custom-bg {
-    background-color: #D8D8D8;
+.container-content{
+    height: 800px;
 }
 
 .nav-custom{
