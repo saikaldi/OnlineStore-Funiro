@@ -1,15 +1,21 @@
 // main.js
 
 async function loadProducts() {
-    const response = await fetch('products.html');
-    const productsHtml = await response.text();
-    document.getElementById('products').innerHTML = productsHtml;
-  }
-  
-  window.addEventListener('DOMContentLoaded', (event) => {
-    loadProducts();
-  });
-  
+  const response = await fetch('products.html');
+  const productsHtml = await response.text();
+
+  // Extract only the products section from productsHtml
+  const parser = new DOMParser();
+  const doc = parser.parseFromString(productsHtml, 'text/html');
+  const productsSection = doc.getElementById('products').innerHTML;
+
+  // Inject the extracted products section into the current page
+  document.getElementById('products').innerHTML = productsSection;
+}
+
+window.addEventListener('DOMContentLoaded', (event) => {
+  loadProducts();
+});
 
   
 
@@ -140,3 +146,18 @@ document.querySelectorAll('.gallery-item img').forEach(image => {
     document.getElementById('lightbox').style.display = 'none';
   });
   
+
+  // Function to open the About Us modal when About link is clicked
+  document.getElementById('aboutUsLink').addEventListener('click', function() {
+    var myModal = new bootstrap.Modal(document.getElementById('aboutUsModal'));
+    myModal.show();
+  });
+
+
+  // Example: Handle form submission
+  document.getElementById('paymentForm').addEventListener('submit', function(event) {
+    event.preventDefault();
+    // Handle form submission logic here (e.g., send payment request to server)
+    alert('Payment processed successfully!');
+    // Redirect or perform further actions as needed
+  });
