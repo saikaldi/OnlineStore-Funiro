@@ -9,7 +9,6 @@ body {
     padding: 10px;
 }
 
-
 /* Custom Inspiration Rooms  */
 .section-inspiration-rooms{
   margin-top: 100px;
@@ -168,12 +167,11 @@ body {
 }
 
 
-
 /* Custom Footer  */
 .footer {
   background-color: #f5e1da;
-  padding: 40px 0; 
-  color: #343a40; 
+  padding: 40px 0;
+  color: #343a40;
 }
 
 .footer h5 {
@@ -182,7 +180,7 @@ body {
 }
 
 .footer ul {
-  list-style-type: none; 
+  list-style-type: none;
   padding-left: 0;
 }
 
@@ -192,20 +190,20 @@ body {
 
 .footer ul li a {
   color: #343a40;
-  text-decoration: none; 
-  transition: color 0.3s ease; 
+  text-decoration: none;
+  transition: color 0.3s ease;
 }
 
 .footer ul li a:hover {
-  color: #E89F71;  
+  color: #E89F71;
 }
 
 .footer ul li a:focus {
-  color: #d88e64; 
+  color: #d88e64;
 }
 
 .footer hr {
-  border-top: 1px solid #dee2e6; 
+  border-top: 1px solid #dee2e6;
 }
 
 .footer p {
@@ -214,7 +212,7 @@ body {
 
 @media (max-width: 767.98px) {
   .footer .row > div {
-      margin-bottom: 20px; 
+      margin-bottom: 20px;
   }
 }
 
@@ -256,19 +254,11 @@ body {
   transform: scale(1.1);
 }
 
-
-
-#about-us-section {
-  background-color: #FDF2E9;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  padding: 30px;
-  margin-top: 30px;
+/*About*/
+.container-about{
+  margin: 80px;
 }
 
-#about-us-section p {
-  margin-bottom: 1.5rem;
-}
 
 /* Responsive Design */
 @media (max-width: 768px) {
@@ -289,12 +279,6 @@ body {
   }
 }
 
-
-/* cart */
-
-/* cart.css */
-
-/* General Styles */
 
 
 /* Section Titles */
@@ -352,9 +336,6 @@ h1 {
       font-size: 2rem;
   }
 }
-
-
-
 
 
 

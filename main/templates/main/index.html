@@ -1,0 +1,96 @@
+{% extends "main/base.html" %}
+{% load static %}
+
+{% block content %}
+<!-- Carousel background -->
+<div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img src="{% static "/images/carousel1.jpg" %}" class="d-block w-100" alt="...">
+    </div>
+    <div class="carousel-item">
+      <img src="{% static "/images/carousel2.jpg" %}" class="d-block w-100" alt="...">
+    </div>
+    <div class="carousel-item">
+      <img src="{% static "/images/carousel3.jpg" %}" class="d-block w-100" alt="...">
+    </div>
+  </div>
+  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>
+</section>
+
+<!-- Section Products  -->
+<section id="products-section" class="container mt-5">
+  <h1 class="text-center">Our Products</h1>
+  <div id="products" class="row"></div>
+  <div class="d-flex justify-content-center mt-3">
+    <a href="/products.html"><button type="button" class="btn btn-lg btn-show-more" disabled>Show more</button></a>
+  </div>
+</section>
+
+<!-- Section Inspiration Rooms -->
+<section class="section-inspiration-rooms">
+  <div class="container text-center mt-5">
+    <div class="row ">
+      <div class="col-4  text-start mt-5">
+        <h2>50+ Beautiful rooms <br> inspiration</h2>
+        <p>Our designer already made a lot of beautiful <br>
+        prototipe of rooms that inspire you</p>
+        <a href="/products.html"><button type="button" class="btn btn-md mt-2 btn-explore-more" disabled>Explore more</button></a>
+      </div>
+      <!-- image slider -->
+      <div class=" col slider">
+        <div class="wrapper">
+          <i id="left" class="fa-solid fa-angle-left"><</i>
+          <div class="slider_image">
+            <img src="{% static "images/rooms/room1.jpg" %}" alt="img" draggable="false">
+            <img src="{% static "images/rooms/room2.jpg" %}" alt="img" draggable="false">
+            <img src="{% static "images/rooms/room3.jpg" %}" alt="img" draggable="false">
+            <img src="{% static "images/rooms/room4.jpg" %}" alt="img" draggable="false">
+            <img src="{% static "images/rooms/room5.jpg" %}" alt="img" draggable="false">
+          </div>
+          <i id="right" class="fa-solid fa-angle-right">></i>
+        </div>
+      </div>
+  </div>
+  </div>
+</section>
+
+
+<!-- Section Setup Rooms -->
+<section>
+  <div>
+    <p class="text-center mt-5 ">Share your setup with</p>
+  <h1 class="text-center pt-0">#FuniroFurniture</h1>
+  </div>
+
+  <!-- Gallery -->
+  <div class="gallery">
+    <div class="gallery-item"><img src="{% static "images/setup-rooms/setup1.jpg" %}" alt="Image 1"></div>
+    <div class="gallery-item"><img src="{% static "images/setup-rooms/setup2.jpg" %}" alt="Image 2"></div>
+    <div class="gallery-item"><img src="{% static "images/setup-rooms/setup3.jpg" %}" alt="Image 3"></div>
+    <div class="gallery-item"><img src="{% static "images/setup-rooms/setup4.jpg" %}" alt="Image 2"></div>
+    <div class="gallery-item"><img src="{% static "images/setup-rooms/setup5.jpg" %}" alt="Image 3"></div>
+    <div class="gallery-item"><img src="{% static "images/setup-rooms/setup3.jpg" %}" alt="Image 1"></div>
+    <div class="gallery-item"><img src="{% static "images/setup-rooms/setup1.jpg" %}" alt="Image 2"></div>
+    <div class="gallery-item"><img src="{% static "images/setup-rooms/setup2.jpg" %}" alt="Image 3"></div>
+    <div class="gallery-item"><img src="{% static "images/setup-rooms/setup4.jpg" %}" alt="Image 3"></div>
+    <!-- Add more gallery items as needed -->
+  </div>
+  <div id="lightbox" class="lightbox">
+    <span class="close">&times;</span>
+    <img class="lightbox-content" id="lightbox-img">
+  </div>
+</section>
+{% endblock %}
+
+
+{% block footer %}
+{% endblock %}
