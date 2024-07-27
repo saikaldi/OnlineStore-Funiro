@@ -147,13 +147,6 @@ document.querySelectorAll('.gallery-item img').forEach(image => {
   });
   
 
-  // Function to open the About Us modal when About link is clicked
-  document.getElementById('aboutUsLink').addEventListener('click', function() {
-    var myModal = new bootstrap.Modal(document.getElementById('aboutUsModal'));
-    myModal.show();
-  });
-
-
   // Example: Handle form submission
   document.getElementById('paymentForm').addEventListener('submit', function(event) {
     event.preventDefault();

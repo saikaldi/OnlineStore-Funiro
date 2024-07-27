@@ -1,7 +1,10 @@
 {% extends "main/base.html" %}
+
 {% load static %}
 
+
 {% block content %}
+
 <!-- Carousel background -->
 <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
   <div class="carousel-inner">
@@ -29,11 +32,18 @@
 <!-- Section Products  -->
 <section id="products-section" class="container mt-5">
   <h1 class="text-center">Our Products</h1>
+  <section id="products" class="container mt-5">
+
+</section>
   <div id="products" class="row"></div>
   <div class="d-flex justify-content-center mt-3">
-    <a href="/products.html"><button type="button" class="btn btn-lg btn-show-more" disabled>Show more</button></a>
+    <a href="{% url "goods:products" %}"><button type="button" class="btn btn-lg btn-show-more" disabled>Show more</button></a>
   </div>
 </section>
+
+
+
+
 
 <!-- Section Inspiration Rooms -->
 <section class="section-inspiration-rooms">
@@ -92,5 +102,3 @@
 {% endblock %}
 
 
-{% block footer %}
-{% endblock %}
