@@ -16,6 +16,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from Furniro.settings import DEBUG
 from main import views
 
 urlpatterns = [
@@ -23,3 +24,8 @@ urlpatterns = [
     path('', include('main.urls', namespace="main")),
     path('categories/', include('goods.urls', namespace="goods"))
 ]
+
+if DEBUG:
+    urlpatterns += [
+        path('__debug__/', include('debug_toolbar.urls')),
+    ]
