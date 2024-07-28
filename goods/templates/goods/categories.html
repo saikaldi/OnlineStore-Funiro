@@ -20,7 +20,7 @@
         <img src="#" class="card-img-top" alt="Not Found">
       {% endif %}
         <div class="card-body">
-          <a href="{% url "categories:products" product.id %}"><h5 class="card-title">{{product.name}}</h5> </a>
+          <a href="{% url "categories:products" product.slug %}"><h5 class="card-title">{{product.name}}</h5> </a>
           <p class="card-text">{{product.description}}</p>
 
           <p class="product_id mt-3">id: {{product.id}}</p>
