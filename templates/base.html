@@ -47,12 +47,17 @@
 
                     </ul>
                 </div>
+
+
+
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="{% url "main:about" %}" id="aboutUsLink">About</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="/carts/cart.html">Cart</a>
+                <a class="nav-link" href="{% url "user:users_cart" %}">Cart</a>
+
+
               </li>
 
               {% if not user.is_authenticated %}
@@ -78,10 +83,54 @@
               {% endif %}
             </ul>
             {% block form %} {% endblock %}
+            <div>
+
+
+
+
+
+
+
+
+              </div>
           </div>
         </div>
+        <!-- Cart Icon and Modal -->
+  <section class="fixed-container ">
+    <!-- Cart Icon that triggers modal -->
+    <div>
+      <button type="button" class="btn border d-flex" id="modalButton" data-bs-toggle="modal"
+      data-bs-target="#exampleModal" aria-expanded="false">
+        <img class="mx-1" src="{% static '/images/icons/cart-icon.svg' %}" alt="Cart Icon" width="24" height="24">
+        <span id="goods-in-cart-count">0</span>
+      </button>
+    </div>
+
+    <!-- Modal Layout -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-scrollable">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <h3 class="text-center mb-4">Cart</h3>
+            <div class="container" id="cart-items-container">
+              <!-- Cart Layout -->
+              {% include 'carts/includes/included_cart.html' %}
+              <!-- End Cart Layout -->
+            </div>
+            <a class="btn btn-dark" href="orders/create_order.html">Order</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
       </nav>
+
+
 {% endblock %}
+
 
 {% block content %}
 {% endblock %}
@@ -138,8 +187,14 @@
 </section>
 {% endblock %}
 
-
-  <script src="{% static "js/script.js" %}"></script>
+  <script src="{% static 'deps/js/jquery/jquery-3.7.0.min.js' %}"></script>
+  <script src="{% static 'deps/js/jquery-events.js' %}"></script>
+  <script src="{% static 'deps/js/jquery-ajax.js' %}"></script>
+  <script src="{% static 'deps/js/bootstrap/bootstrap.bundle.min.js' %}"></script>
+  <script src="{% static 'js/script.js' %}"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </body>
 </html>
+
+
+

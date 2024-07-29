@@ -79,18 +79,19 @@
 
 
 
-        <!-- Cart Section -->
-        <div class="col-md-8 ">
-            <div class="bg-muted p-4 mb-4 mx-2 rounded custom-shadow text-center border border-secondary card">
-                <h3 class=" mb-4">Cart</h3>
-                <div class="container" id="cart-items-container">
-                    <!-- Cart Items Markup -->
-                </div>
-                <a class="btn btn-secondary href="#">
-                    Order
-                </a>
-            </div>
-        </div>
+        <div class="col-md-7">
+                                    <div class=" bg-white p-4 mb-4 mx-2 rounded custom-shadow text-center">
+                                        <h3 class="text-center mb-4">Cart</h3>
+                                        <div class="container" id="cart-items-container">
+                                            <!-- Cart layout-->
+                                            {% include "carts/includes/included_cart.html" %}
+                                            <!-- End Cart layout -->
+                                        </div>
+                                        <a class="btn btn-dark" href="../orders/create_order.html">
+                                            Order
+                                        </a>
+                                    </div>
+                                </div>
 
         <!-- Orders Section -->
         <div class="col-md-12">

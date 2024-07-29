@@ -9,6 +9,18 @@ body {
     padding: 10px;
 }
 
+.fixed-container {
+      position: fixed;
+      top: 56px; /* Adjust based on the height of your navbar */
+      right: 20px; /* Adjust position from the right */
+      z-index: 1050; /* Ensure it appears on top of other elements */
+
+    }
+
+/* Add padding to content to avoid overlap */
+.content-padding {
+  padding-top: 56px; /* Add padding to ensure content doesn’t overlap with fixed navbar and cart icon */
+}
 
 /* Custom Inspiration Rooms  */
 .section-inspiration-rooms{
