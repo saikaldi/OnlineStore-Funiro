@@ -1,6 +1,10 @@
 {% extends "base.html" %}
 {% load static %}
 
+{% block modal_cart %}
+{% include "includes/cart_button.html" %}
+{% endblock %}
+
 {% block content %}
 <div class="container mt-5">
     <!-- Product Card -->
@@ -37,7 +41,7 @@
                     <h5 class="card-title">{{ product.name }}</h5>
                     <p class="text-muted">Price: ${{ product.price }}</p>
                     <p class="card-text">{{ product.description }}</p>
-                    <a href="#" class="btn btn-dark add-to-cart">Add to cart</a>
+                    <a href="{% url "carts:cart_add" product.slug %}" class="btn btn-dark add-to-cart">Add to cart</a>
                 </div>
             </div>
         </div>
