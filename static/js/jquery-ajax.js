@@ -36,60 +36,60 @@ $(document).ready(function () {
                 cartItemsContainer.html(data.cart_items_html);
             },
             error: function (data) {
-                console.log("Error when adding an item to cart", data);
+                console.log("Error when adding a product to cart", data);
             },
         });
     });
 
 
 
-    // // Ловим собыитие клика по кнопке удалить товар из корзины
-    // $(document).on("click", ".remove-from-cart", function (e) {
-    //     // Блокируем его базовое действие
-    //     e.preventDefault();
+    // Interception of the event of pressing the button to remove an item from the cart
+    $(document).on("click", ".remove-from-cart", function (e) {
+        // Blocking its base action
+        e.preventDefault();
 
-    //     // Берем элемент счетчика в значке корзины и берем оттуда значение
-    //     var goodsInCartCount = $("#goods-in-cart-count");
-    //     var cartCount = parseInt(goodsInCartCount.text() || 0);
+        // We take the counter element in the cart icon and take the value from there
+        var goodsInCartCount = $("#goods-in-cart-count");
+        var cartCount = parseInt(goodsInCartCount.text() || 0);
 
-    //     // Получаем id корзины из атрибута data-cart-id
-    //     var cart_id = $(this).data("cart-id");
-    //     // Из атрибута href берем ссылку на контроллер django
-    //     var remove_from_cart = $(this).attr("href");
+        // Get cart id from the data-cart-id attribute
+        var cart_id = $(this).data("cart-id");
+        // Из атрибута href берем ссылку на контроллер django
+        var remove_from_cart = $(this).attr("href");
 
-    //     // делаем post запрос через ajax не перезагружая страницу
-    //     $.ajax({
+        // make post request via ajax without reloading the page
+        $.ajax({
 
-    //         type: "POST",
-    //         url: remove_from_cart,
-    //         data: {
-    //             cart_id: cart_id,
-    //             csrfmiddlewaretoken: $("[name=csrfmiddlewaretoken]").val(),
-    //         },
-    //         success: function (data) {
-    //             // Сообщение
-    //             successMessage.html(data.message);
-    //             successMessage.fadeIn(400);
-    //             // Через 7сек убираем сообщение
-    //             setTimeout(function () {
-    //                 successMessage.fadeOut(400);
-    //             }, 7000);
+            type: "POST",
+            url: remove_from_cart,
+            data: {
+                cart_id: cart_id,
+                csrfmiddlewaretoken: $("[name=csrfmiddlewaretoken]").val(),
+            },
+            success: function (data) {
+                // Message
+                successMessage.html(data.message);
+                successMessage.fadeIn(400);
+                // After 7 seconds, remove the message
+                setTimeout(function () {
+                    successMessage.fadeOut(400);
+                }, 7000);
 
-    //             // Уменьшаем количество товаров в корзине (отрисовка)
-    //             cartCount -= data.quantity_deleted;
-    //             goodsInCartCount.text(cartCount);
+                // Reduce the number of items in the cart (rendering)
+                cartCount -= data.quantity_deleted;
+                goodsInCartCount.text(cartCount);
 
-    //             // Меняем содержимое корзины на ответ от django (новый отрисованный фрагмент разметки корзины)
-    //             var cartItemsContainer = $("#cart-items-container");
-    //             cartItemsContainer.html(data.cart_items_html);
+                // Change the contents of the cart to the response from django (new rendered fragment of the cart markup)
+                var cartItemsContainer = $("#cart-items-container");
+                cartItemsContainer.html(data.cart_items_html);
 
-    //         },
+            },
 
-    //         error: function (data) {
-    //             console.log("Ошибка при добавлении товара в корзину");
-    //         },
-    //     });
-    // });
+            error: function (data) {
+                console.log("Error when adding a product to cart");
+            },
+        });
+    });
 
 
 
