@@ -1,56 +1,45 @@
-// Когда html документ готов (прорисован)
+
 $(document).ready(function () {
-    // берем в переменную элемент разметки с id jq-notification для оповещений от ajax
+    // Get markup element with jq-notification identifier for AJAX notifications
     var successMessage = $("#jq-notification");
 
-    // // Ловим собыитие клика по кнопке добавить в корзину
-    // $(document).on("click", ".add-to-cart", function (e) {
-    //     // Блокируем его базовое действие
-    //     e.preventDefault();
+    // Handle the "Add to Cart" button click
+    $(document).on("click", ".add-to-cart", function (e) {
+        e.preventDefault(); // Prevent the default action
 
-    //     // Берем элемент счетчика в значке корзины и берем оттуда значение
-    //     var goodsInCartCount = $("#goods-in-cart-count");
-    //     var cartCount = parseInt(goodsInCartCount.text() || 0);
+        var goodsInCartCount = $("#goods-in-cart-count");
+        var cartCount = parseInt(goodsInCartCount.text() || 0);
 
-    //     // Получаем id товара из атрибута data-product-id
-    //     var product_id = $(this).data("product-id");
+        var product_id = $(this).data("product-id");
+        var add_to_cart_url = $(this).attr("href");
 
-    //     // Из атрибута href берем ссылку на контроллер django
-    //     var add_to_cart_url = $(this).attr("href");
+        $.ajax({
+            type: "POST",
+            url: add_to_cart_url,
+            data: {
+                product_id: product_id,
+                csrfmiddlewaretoken: $("[name=csrfmiddlewaretoken]").val(),
+            },
+            success: function (data) {
+                // Display success message
+                successMessage.html(data.message);
+                successMessage.fadeIn(400);
+                setTimeout(function () {
+                    successMessage.fadeOut(400);
+                }, 7000);
 
-    //     // делаем post запрос через ajax не перезагружая страницу
-    //     $.ajax({
-    //         type: "POST",
-    //         url: add_to_cart_url,
-    //         data: {
-    //             product_id: product_id,
-    //             csrfmiddlewaretoken: $("[name=csrfmiddlewaretoken]").val(),
-    //         },
-    //         success: function (data) {
-    //             // Сообщение
-    //             successMessage.html(data.message);
-    //             successMessage.fadeIn(400);
-    //             // Через 7сек убираем сообщение
-    //             setTimeout(function () {
-    //                 successMessage.fadeOut(400);
-    //             }, 7000);
+                // Update cart count and cart items
+                cartCount++;
+                goodsInCartCount.text(cartCount);
 
-    //             // Увеличиваем количество товаров в корзине (отрисовка в шаблоне)
-    //             cartCount++;
-    //             goodsInCartCount.text(cartCount);
-
-    //             // Меняем содержимое корзины на ответ от django (новый отрисованный фрагмент разметки корзины)
-    //             var cartItemsContainer = $("#cart-items-container");
-    //             cartItemsContainer.html(data.cart_items_html);
-
-    //         },
-
-    //         error: function (data) {
-    //             console.log("Ошибка при добавлении товара в корзину");
-    //         },
-    //     });
-    // });
-
+                var cartItemsContainer = $("#cart-items-container");
+                cartItemsContainer.html(data.cart_items_html);
+            },
+            error: function (data) {
+                console.log("Error when adding an item to cart", data);
+            },
+        });
+    });
 
 
 
@@ -178,4 +167,36 @@ $(document).ready(function () {
     //         },
     //     });
     // }
+
+    // Take an element from layout by id - notification form django
+    var notification = $('#notification');
+    // After 7s remove
+    if (notification.length > 0) {
+        setTimeout(function () {
+            notification.alert('close');
+        }, 7000);
+    }
+
+// When you click on the shopping cart icon, a pop-up (modal) window opens
+    $('#modalButton').click(function () {
+        $('#exampleModal').appendTo('body');
+
+        $('#exampleModal').modal('show');
+    });
+
+// Click on the button to close the cart windows
+    $('#exampleModal .btn-close').click(function () {
+        $('#exampleModal').modal('hide');
+    });
+
+    // Delivery method selection radio button event handler
+    $("input[name='requires_delivery']").change(function() {
+        var selectedValue = $(this).val();
+        // Hide or show shipping address inputs
+        if (selectedValue === "1") {
+            $("#deliveryAddressField").show();
+        } else {
+            $("#deliveryAddressField").hide();
+        }
+    });
 });

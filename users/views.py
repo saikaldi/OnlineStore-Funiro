@@ -14,6 +14,7 @@ def login(request):
             user = auth.authenticate(username=username, password=password)
             if user:
                 auth.login(request, user)
+                messages.success(request, f'{username}, You successfully logged in')
 
                 redirect_page = request.POST.get('next', None)
                 if redirect_page and redirect_page != reverse('user:logout'):
@@ -36,6 +37,7 @@ def registration(request):
             form.save()
             user = form.instance
             auth.login(request, user)
+            messages.success(request, f'{user.username}, You successfully registered and logged in')
             return HttpResponseRedirect(reverse('main:index'))
     else:
         form = UserRegistrationForm()
@@ -50,6 +52,7 @@ def profile(request):
         form = ProfileForm(data=request.POST, instance=request.user, files=request.FILES)
         if form.is_valid():
             form.save()
+            messages.success(request, f' Profile successfully updated')
             return HttpResponseRedirect(reverse('user:profile'))
     else:
         form = ProfileForm(instance=request.user)
@@ -64,5 +67,6 @@ def users_cart(request):
 
 @login_required
 def logout(request):
+    messages.success(request, f'{request.user.username}, You successfully logged out ')
     auth.logout(request)
     return redirect(reverse('main:index'))
