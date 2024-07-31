@@ -2,7 +2,7 @@ from django.db import models
 
 # Create your models here.
 from django.db import models
-
+from django.urls import reverse
 # Create your models here.
 
 class Categories(models.Model):
@@ -13,6 +13,9 @@ class Categories(models.Model):
         db_table = 'category'
         verbose_name = 'Category'
         verbose_name_plural = "Categories"
+
+    def get_absolute_url(self):
+        return reverse("categories:product", kwargs={"product_slug": self.slug})
 
     def __str__(self):
         return self.name
