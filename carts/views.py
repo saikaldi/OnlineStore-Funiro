@@ -19,6 +19,18 @@ def cart_add(request):
                 cart.save()
         else:
             Cart.objects.create(user=request.user, product=product, quantity=1)
+    else:
+        carts = Cart.objects.filter(
+            session_key=request.session.session_key, product=product)
+
+        if carts.exists():
+            cart = carts.first()
+            if cart:
+                cart.quantity += 1
+                cart.save()
+        else:
+            Cart.objects.create(
+                session_key=request.session.session_key, product=product, quantity=1)
 
     user_cart = get_user_carts(request)
     cart_items_html = render_to_string(
@@ -47,7 +59,7 @@ def cart_change(request):
     response_data = {
         "message": "Quantity changed ",
         "cart_items_html": cart_items_html,
-        "quantity": updated_quantity,
+        "quaantity": updated_quantity,
     }
 
     return JsonResponse(response_data)

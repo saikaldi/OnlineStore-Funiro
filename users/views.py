@@ -3,6 +3,7 @@ from django.contrib import auth, messages
 from django.http import HttpResponseRedirect
 from django.shortcuts import render, reverse, redirect
 from users.forms import UserLoginForm, UserRegistrationForm, ProfileForm
+from carts.models import Cart
 
 
 def login(request):
@@ -12,9 +13,14 @@ def login(request):
             username = request.POST['username']
             password = request.POST['password']
             user = auth.authenticate(username=username, password=password)
+            session_key = request.session.session_key
+
             if user:
                 auth.login(request, user)
                 messages.success(request, f'{username}, You successfully logged in')
+
+                if session_key:
+                    Cart.objects.filter(session_key=session_key).update(user=user)
 
                 redirect_page = request.POST.get('next', None)
                 if redirect_page and redirect_page != reverse('user:logout'):
@@ -25,7 +31,7 @@ def login(request):
         form = UserLoginForm()
 
     context = {
-        'form': form
+        'form':form
     }
     return render(request, 'users/login.html', context)
 
@@ -35,12 +41,19 @@ def registration(request):
         form = UserRegistrationForm(data=request.POST)
         if form.is_valid():
             form.save()
+
+            session_key = request.session.session_key
+
             user = form.instance
             auth.login(request, user)
-            messages.success(request, f'{user.username}, You successfully registered and logged in')
+
+            if session_key:
+                Cart.objects.filter(session_key=session_key).update(user=user)
+            messages.success(request, f"{user.username}, You registered successfully")
             return HttpResponseRedirect(reverse('main:index'))
     else:
         form = UserRegistrationForm()
+
     context = {
         'form': form
     }
