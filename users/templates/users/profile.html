@@ -89,11 +89,11 @@
                                             {% include "carts/includes/included_cart.html" %}
                                             <!-- End Cart layout -->
                                         </div>
-                                        {% if carts %}
-                                            <a class="btn btn-dark" href="../orders/create_order.html">
-                                                Order
-                                            </a>
-                                        {% endif %}
+{% if carts and not order%}
+    <a class="btn btn-dark" href="{% url "orders:create_order" %}">
+    Order
+    </a>
+{% endif %}
                                     </div>
                                 </div>
 
