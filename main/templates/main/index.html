@@ -37,55 +37,25 @@
 
 
 
-<!-- Section Inspiration Rooms -->
-<section class="section-inspiration-rooms">
-  <div class="container text-center mt-5">
-    <div class="row ">
-      <div class="col-4  text-start mt-5">
-        <h2>50+ Beautiful rooms <br> inspiration</h2>
-        <p>Our designer already made a lot of beautiful <br>
-        prototipe of rooms that inspire you</p>
-        <a href="/products.html"><button type="button" class="btn btn-md mt-2 btn-explore-more" disabled>Explore more</button></a>
-      </div>
-      <!-- image slider -->
-      <div class=" col slider">
-        <div class="wrapper">
-          <i id="left" class="fa-solid fa-angle-left"><</i>
-          <div class="slider_image">
-            <img src="{% static "images/rooms/room1.jpg" %}" alt="img" draggable="false">
-            <img src="{% static "images/rooms/room2.jpg" %}" alt="img" draggable="false">
-            <img src="{% static "images/rooms/room3.jpg" %}" alt="img" draggable="false">
-            <img src="{% static "images/rooms/room4.jpg" %}" alt="img" draggable="false">
-            <img src="{% static "images/rooms/room5.jpg" %}" alt="img" draggable="false">
-          </div>
-          <i id="right" class="fa-solid fa-angle-right">></i>
-        </div>
-      </div>
-  </div>
-  </div>
-</section>
-
 
 <!-- Section Setup Rooms -->
 <section>
   <div>
-    <p class="text-center mt-5 ">Share your setup with</p>
-  <h1 class="text-center pt-0">#FuniroFurniture</h1>
+    <h2 class="text-center mt-5 ">50+ Beautiful rooms <br> inspiration</h2>
+  <p class="text-center pt-0">Our designer already made a lot of beautiful <br>
+        prototipe of rooms that inspire you</p>
   </div>
 
-  <!-- Gallery -->
   <div class="gallery">
-    <div class="gallery-item"><img src="{% static "images/setup-rooms/setup1.jpg" %}" alt="Image 1"></div>
-    <div class="gallery-item"><img src="{% static "images/setup-rooms/setup2.jpg" %}" alt="Image 2"></div>
-    <div class="gallery-item"><img src="{% static "images/setup-rooms/setup3.jpg" %}" alt="Image 3"></div>
-    <div class="gallery-item"><img src="{% static "images/setup-rooms/setup4.jpg" %}" alt="Image 2"></div>
-    <div class="gallery-item"><img src="{% static "images/setup-rooms/setup5.jpg" %}" alt="Image 3"></div>
-    <div class="gallery-item"><img src="{% static "images/setup-rooms/setup3.jpg" %}" alt="Image 1"></div>
-    <div class="gallery-item"><img src="{% static "images/setup-rooms/setup1.jpg" %}" alt="Image 2"></div>
-    <div class="gallery-item"><img src="{% static "images/setup-rooms/setup2.jpg" %}" alt="Image 3"></div>
-    <div class="gallery-item"><img src="{% static "images/setup-rooms/setup4.jpg" %}" alt="Image 3"></div>
-    <!-- Add more gallery items as needed -->
-  </div>
+        {% for room in rooms %}
+        <div class="gallery-item">
+            <img src="{{ room.image.url }}" alt="Room Image" class="gallery-img">
+        </div>
+        {% empty %}
+        <p>No images available.</p>
+        {% endfor %}
+    </div>
+
   <div id="lightbox" class="lightbox">
     <span class="close">&times;</span>
     <img class="lightbox-content" id="lightbox-img">
