@@ -1,22 +1,120 @@
-# Ignore Django migration files
-*.pyc
+# Byte-compiled / optimized / DLL files
 __pycache__/
-*.sqlite3
+*.py[cod]
+*$py.class
 
-# Ignore environment variables file
-.env
+# C extensions
+*.so
 
-# Ignore IDE and editor-specific files
-.vscode/
+# Distribution / packaging
+.Python
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+*.egg
+*.egg-info/
+dist/
+build/
+.eggs/
+
+# Installer logs
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Unit test / coverage reports
+htmlcov/
+.tox/
+.nox/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+*.py,cover
+.hypothesis/
+.pytest_cache/
+.coveragerc
+
+# Translations
+*.mo
+*.pot
+
+# Django stuff:
+*.log
+local_settings.py
+db.sqlite3
+db.sqlite3-journal
+
+# Flask stuff:
+instance/
+.webassets-cache
+
+# Scrapy stuff:
+.scrapy
+
+# Sphinx documentation
+docs/_build/
+
+# PyBuilder
+target/
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# IPython
+profile_default/
+ipython_config.py
+
+# PyCharm
 .idea/
 
-# Ignore local development settings
-*.log
-*.bak
+# VS Code
+.vscode/
 
-# Ignore static files and media (if managed separately)
-/staticfiles/
-/media/
+# mypy
+.mypy_cache/
+.dmypy.json
+dmypy.json
 
-# Ignore virtual environment
+# Pyre type checker
+.pyre/
+
+# Celery stuff
+celerybeat-schedule
+celerybeat.pid
+
+# SageMath parsed files
+*.sage.py
+
+# Environments
+.env
+.venv
+env/
 venv/
+ENV/
+env.bak/
+venv.bak/
+.spyderproject
+.spyproject
+
+# Rope projects
+.ropeproject
+
+# mkdocs documentation
+/site
+
+# Editor directories and files
+.idea/
+.vscode/
+*.swp
+*~
+
+# macOS
+.DS_Store
+
+# Windows
+Thumbs.db
+ehthumbs.db
